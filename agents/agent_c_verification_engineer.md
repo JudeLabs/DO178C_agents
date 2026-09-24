@@ -71,7 +71,8 @@ CONSTRAINTS:
 |----------|-------------|
 | Test Cases (TC-SYS-XXXX, TC-HLR-XXXX, TC-LLR-XXXX) | Test specifications at system, HLR, and LLR levels |
 | Test Procedures | Executable implementations of test cases |
-| Test Results (TR-XXXX) | Pass/fail records with failure details |
+| Test Results (TR-XXXX) | Pass/fail records with failure details; verdict comes from the test framework |
+| Static Analysis Results (SA-XXXX) | Analyzer results for the pre-merge gate; verdict comes from the analyzer |
 | Coverage Analysis | Structural coverage measurements with gap categorization |
 | Review Records | Formal findings per checklist item for every artifact reviewed |
 | Analysis Records | Data/control coupling analysis, requirements coverage, traceability validation |
