@@ -4,11 +4,11 @@
 
 ## Purpose
 
-Three-mode verification toolkit covering artifact reviews, structural coverage analysis, and traceability validation. All modes enforce the independence principle: findings are based solely on documented artifacts, never on verbal explanation or agent reasoning.
+Three-mode verification toolkit covering artifact reviews, structural coverage analysis, and traceability validation. All modes enforce a blind-review (anti-anchoring) constraint: findings are based solely on documented artifacts, never on verbal explanation or agent reasoning. Output is a draft verification record; DO-178C independence comes from the human reviewer at the commit gate, who reviews it rather than trusting it.
 
 ## Critical Rule
 
-> You are independent from the agents who produced the artifacts you are reviewing. Base your findings **ONLY** on what is documented in the artifact. Do not accept verbal explanations, rationale, or "it works because I designed it that way" from Agent A or Agent B. If the artifact doesn't demonstrate compliance, it doesn't comply.
+> You are blind to the reasoning of the agents who produced the artifacts you are reviewing. Base your findings **ONLY** on what is documented in the artifact. Do not accept verbal explanations, rationale, or "it works because I designed it that way" from Agent A or Agent B. If the artifact doesn't demonstrate compliance, it doesn't comply.
 
 ---
 
@@ -80,7 +80,7 @@ summary: >
 recommendation: [approve | revise and re-review]
 ```
 
-Write to: `LAR/verification/review_records/[artifact_id]_review.yaml`
+Write to: `LAR/RR-[artifact_id].yaml`
 
 ---
 
@@ -132,7 +132,7 @@ gaps:
 status: [complete | gaps_remaining]
 ```
 
-Write to: `LAR/verification/coverage_analysis/coverage_report.yaml`
+Write to: `LAR/COV-[next available number].yaml`
 
 ---
 
@@ -203,4 +203,4 @@ gate_readiness:
   gate_6: [ready | not_ready]
 ```
 
-Write to: `LAR/verification/analysis_records/traceability_validation.yaml`
+Write to: `LAR/TV-[next available number].yaml`

@@ -117,7 +117,7 @@ Step 9: Generate Problem Reports for gaps
       behavior when [condition].
     status: open
 
-  Write PR to: LAR/cm/problem_reports/PR-XXXX.yaml
+  Write PR to: LAR/PR-XXXX.yaml
   DO NOT proceed to create a test case with assumed behavior.
 
 Step 10: Compile and output
@@ -131,7 +131,7 @@ Step 10: Compile and output
   Produce TWO artifacts per test case:
 
   Artifact 1 — Test specification (YAML):
-    Write to: LAR/verification/test_cases/[level]_tests/[TC-ID].yaml
+    Write to: LAR/[TC-ID].yaml
     
     id: [TC-level-reqnum-seq]
     title: [technique — brief description]
@@ -155,7 +155,7 @@ Step 10: Compile and output
       FAIL if [specific measurable condition].
 
   Artifact 2 — Executable test (Python/pytest):
-    Write to: LAR/verification/test_code/[level]/test_[component].py
+    Write to: LAR/test_[component].py
     Must include:
       @pytest.mark.requirement("[REQ-ID]")
       @pytest.mark.test_id("[TC-ID]")
@@ -164,9 +164,7 @@ Step 10: Compile and output
       Independence from other tests (no execution order dependency)
 
   Update traceability:
-    SYS tests: LAR/traceability/sys_req_to_test.md
-    HLR tests: LAR/traceability/hlr_to_test_cases.md
-    LLR tests: LAR/traceability/llr_to_test_cases.md
+    All levels: LAR/traceability.md (append under the appropriate SYS / HLR / LLR section)
     Format: [requirement_id] ↔ [test_case_id]
 ```
 

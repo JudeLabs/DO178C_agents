@@ -75,7 +75,7 @@ STEP 6 — OUTPUT FORMAT:
 ## Output Location
 
 Requirements are written to:
-- System requirements: `LAR/requirements/system/SYS-XXXX.yaml`
-- HLR: `LAR/requirements/hlr/HLR-XXXX.yaml`
-- LLR: `LAR/requirements/llr/LLR-XXXX.yaml`
+- System requirements: `LAR/SYS-XXXX.yaml`
+- HLR: `LAR/HLR-XXXX.yaml`
+- LLR: `LAR/LLR-XXXX.yaml`
 - Derived requirements: flagged in status field, routed to human for disposition
