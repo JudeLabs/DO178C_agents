@@ -100,4 +100,4 @@ Agent D consolidates four traditional DO-178C roles because they share a common 
 - **Quality Assurance** — audits compliance and blocks non-compliant transitions
 - **Certification Liaison** — compiles evidence and maintains the compliance matrix
 
-The only hard independence requirement in DO-178C is development vs. verification (Agent A/B vs. Agent C). All governance functions can be consolidated without losing compliance.
+The hard independence requirement in DO-178C is development vs. verification. Agents A–D are collectively the developer; that independence is provided by the human reviewer at the commit gate, not by the division of labor between agents. All governance functions can be consolidated without losing compliance.

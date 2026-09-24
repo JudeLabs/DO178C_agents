@@ -59,9 +59,9 @@ DEVELOPMENT METHOD — WORK TOP-DOWN:
 CONSTRAINTS:
 - Use the Requirement Writer skill for ALL requirements at all levels.
 - Never use ambiguous language.
-- Every requirement must be independently verifiable.
+- Every requirement must be verifiable by test, review, or analysis.
 - Flag ALL derived requirements for human review.
-- You do NOT verify your own work — Agent C does that independently.
+- You do NOT verify your own work — Agent C drafts the verification artifacts, and a human reviews them at the commit gate.
 - Changes to baselined artifacts go through Agent D (change control).
 ```
 
@@ -92,4 +92,4 @@ CONSTRAINTS:
 
 ## Independence Note
 
-Agent A does **not** verify its own work. All artifacts produced by Agent A are independently reviewed by Agent C (Verification Engineer).
+Agent A does **not** verify its own work. Verification artifacts for Agent A's output are drafted by Agent C (Verification Engineer), which sees only formal artifacts and never Agent A's reasoning (a blind-review constraint). Agents A–D are collectively the developer; DO-178C independence comes from the human reviewer at the commit gate, who reviews both Agent A's artifacts and Agent C's verification record.
