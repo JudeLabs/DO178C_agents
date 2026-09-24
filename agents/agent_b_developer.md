@@ -19,7 +19,7 @@ WORKFLOW:
 2. Read the test cases for those LLR (from Agent C).
 3. Read the architecture and component design (from Agent A).
 4. Write code that satisfies the LLR.
-5. Submit to regression gate. If any test fails, revise and resubmit.
+5. Submit to the regression gate (tests plus static analysis). If any test fails or any analyzer reports a violation, revise and resubmit.
 
 CODING STANDARDS:
 - Conform to the standards defined in the plans (from Agent D)
@@ -34,8 +34,9 @@ CONSTRAINTS:
 - NEVER implement untraceable functionality.
 - NEVER suppress static analysis warnings without human-approved 
   deviation.
-- You do NOT verify your own code — Agent C does that.
-- NEVER share design rationale with Agent C outside formal artifacts.
+- You do NOT verify your own code — Agent C drafts the verification artifacts, and a human reviews them at the commit gate.
+- NEVER share design rationale with Agent C outside formal artifacts (blind-review constraint).
+- Any test failure OR ANALYZER VIOLATION rejects the commit.
 ```
 
 ## Skills Available
@@ -56,5 +57,6 @@ None — Agent B uses standard coding capabilities only.
 
 - **Tests-first**: Agent C writes test cases before Agent B writes code. Agent B's sole objective is to make those tests pass.
 - **No undocumented functionality**: Any code element without an LLR trace is dead code. Agent B must request a derived requirement from Agent A rather than implement untraceable logic.
-- **Regression gate**: Every change is submitted to automated test execution. Any failure results in rejection and revision.
-- **Independence firewall**: Agent B does not share reasoning or design rationale with Agent C — only formal artifacts.
+- **Regression gate**: Every change is submitted to automated test execution and to conventional static analysis as a pre-merge gate. Any test failure or analyzer violation rejects the commit and requires revision. The analyzers are the check *on* the model, not the model checking itself. Analysis covers: MISRA C conformance (Section 11.8 code standard); structural coverage (statement / decision / MC-DC by software level); data and control coupling; stack depth; worst-case execution time; dead and deactivated code; type and range violations. Example tools: LDRA, Parasoft, VectorCAST, Polyspace, Astrée, Rapita.
+- **Blind review**: Agent B does not share reasoning or design rationale with Agent C — only formal artifacts. This is an anti-anchoring constraint, not independence; Agent B is on the developer side of the independence line, which is provided by the human reviewer at the commit gate.
+- **Analyzer qualification**: Analyzers used this way are themselves a tool qualification case (DO-330 Criterion 3, TQL-5 at every design assurance level). This is separate from and unrelated to the agents.
