@@ -1,5 +1,7 @@
 # Skill 5: Compliance & Audit Toolkit
 
+> **Note on the standard:** DO-178C (RTCA DO-178C / EUROCAE ED-12C) is a copyrighted document and must be purchased from RTCA or EUROCAE. This skill does not reproduce its objective tables. Any objective references below are paraphrased illustrations of the compliance-matrix format; a real program must populate the matrix from its own copy of the standard.
+
 **Used by:** Agent D (Process & Compliance)
 
 ## Purpose
@@ -83,159 +85,27 @@ Write to: `LAR/NCR-XXXX.yaml`
 
 **Use when:** Tracking objective satisfaction throughout the project, and before Gate 6.
 
-> **Note on the standard:** DO-178C (RTCA/EUROCAE ED-12C) must be purchased for use on actual certification programs. Tables A-1 through A-10 in the standard define all lifecycle objectives. The representative objective set below covers the most commonly encountered objectives at DAL C/D and is sufficient to operate this skill for learning, prototyping, or framework evaluation. For a real certification program, replace this set with the full tables from the purchased standard.
+This mode maintains `LAR/compliance_matrix.yaml`: one entry per DO-178C objective, each recording the software levels at which it applies, whether independence is required, which agent owns it, the plan section that governs it, the activity performed, and the evidence that proves it. The objectives themselves are not supplied by this skill. They come from the program's own copy of the standard.
 
-### Representative Objective Set
-
-The following objectives are drawn from Tables A-1 through A-10. The **Independence** column indicates whether the activity must be performed by someone independent of the developer (the human reviewer at the commit gate; Agents A–D are collectively the developer, so Agent C does not satisfy it). Independence is required at DAL A/B for most objectives; at DAL C/D it applies to selected objectives as noted.
-
-#### Table A-1: Software Planning Process
-
-| Obj | Description | DAL D | DAL C | DAL B | DAL A | Ind? | Responsible |
-|-----|-------------|-------|-------|-------|-------|------|-------------|
-| A1-1 | Software development and verification processes are defined | ✓ | ✓ | ✓ | ✓ | No | Agent D |
-| A1-2 | Software lifecycle is defined | ✓ | ✓ | ✓ | ✓ | No | Agent D |
-| A1-3 | Software lifecycle environment is defined | ✓ | ✓ | ✓ | ✓ | No | Agent D |
-| A1-4 | Additional considerations are addressed | ✓ | ✓ | ✓ | ✓ | No | Agent D |
-| A1-5 | Plans are consistent with each other | ✓ | ✓ | ✓ | ✓ | No | Agent D |
-
-#### Table A-2: Software Development — Requirements
-
-| Obj | Description | DAL D | DAL C | DAL B | DAL A | Ind? | Responsible |
-|-----|-------------|-------|-------|-------|-------|------|-------------|
-| A2-1 | High-level requirements are developed | ✓ | ✓ | ✓ | ✓ | No | Agent A |
-| A2-2 | Derived HLR are defined and provided to system safety process | ✓ | ✓ | ✓ | ✓ | No | Agent A |
-| A2-3 | Software architecture is developed | — | ✓ | ✓ | ✓ | No | Agent A |
-| A2-4 | Low-level requirements are developed | — | ✓ | ✓ | ✓ | No | Agent A |
-| A2-5 | Derived LLR are defined and provided to system safety process | — | ✓ | ✓ | ✓ | No | Agent A |
-| A2-6 | Source code is developed | ✓ | ✓ | ✓ | ✓ | No | Agent B |
-| A2-7 | Executable object code is produced | ✓ | ✓ | ✓ | ✓ | No | Agent B |
-
-#### Table A-3: Verification of HLR
-
-| Obj | Description | DAL D | DAL C | DAL B | DAL A | Ind? | Responsible |
-|-----|-------------|-------|-------|-------|-------|------|-------------|
-| A3-1 | HLR comply with system requirements | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A3-2 | HLR are accurate and consistent | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A3-3 | HLR are compatible with target hardware | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A3-4 | HLR are verifiable | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A3-5 | HLR conform to standards | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A3-6 | HLR are traceable to system requirements | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A3-7 | Algorithms are accurate | — | ✓ | ✓ | ✓ | Yes | Agent C |
-
-#### Table A-4: Verification of Software Architecture
-
-| Obj | Description | DAL D | DAL C | DAL B | DAL A | Ind? | Responsible |
-|-----|-------------|-------|-------|-------|-------|------|-------------|
-| A4-1 | Architecture is compatible with HLR | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A4-2 | Architecture is consistent | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A4-3 | Architecture is compatible with target hardware | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A4-4 | Partitioning integrity is confirmed | — | — | ✓ | ✓ | Yes | Agent C |
-
-#### Table A-5: Verification of LLR
-
-| Obj | Description | DAL D | DAL C | DAL B | DAL A | Ind? | Responsible |
-|-----|-------------|-------|-------|-------|-------|------|-------------|
-| A5-1 | LLR comply with HLR | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A5-2 | LLR are accurate and consistent | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A5-3 | LLR are compatible with target hardware | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A5-4 | LLR are verifiable | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A5-5 | LLR conform to standards | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A5-6 | LLR are traceable to HLR | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A5-7 | Algorithms are accurate | — | ✓ | ✓ | ✓ | Yes | Agent C |
-
-#### Table A-6: Verification of Source Code
-
-| Obj | Description | DAL D | DAL C | DAL B | DAL A | Ind? | Responsible |
-|-----|-------------|-------|-------|-------|-------|------|-------------|
-| A6-1 | Source code complies with LLR | ✓ | ✓ | ✓ | ✓ | Yes | Agent C |
-| A6-2 | Source code complies with software architecture | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A6-3 | Source code is verifiable | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A6-4 | Source code conforms to standards | ✓ | ✓ | ✓ | ✓ | Yes | Agent C |
-| A6-5 | Source code is traceable to LLR | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A6-6 | Source code is accurate and consistent | — | — | ✓ | ✓ | Yes | Agent C |
-
-#### Table A-7: Testing of Outputs of Integration
-
-| Obj | Description | DAL D | DAL C | DAL B | DAL A | Ind? | Responsible |
-|-----|-------------|-------|-------|-------|-------|------|-------------|
-| A7-1 | Executable object code complies with HLR (normal range) | ✓ | ✓ | ✓ | ✓ | Yes | Agent C |
-| A7-2 | Executable object code is robust with respect to HLR | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A7-3 | Executable object code complies with LLR (normal range) | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A7-4 | Executable object code is robust with respect to LLR | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A7-5 | Executable object code is compatible with target hardware | — | ✓ | ✓ | ✓ | Yes | Agent C |
-
-#### Table A-8: Structural Coverage
-
-| Obj | Description | DAL D | DAL C | DAL B | DAL A | Ind? | Responsible |
-|-----|-------------|-------|-------|-------|-------|------|-------------|
-| A8-1 | Statement coverage is achieved | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A8-2 | Decision coverage is achieved | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A8-3 | Modified condition/decision coverage (MC/DC) is achieved | — | — | — | ✓ | Yes | Agent C |
-
-#### Table A-9: Verification of Verification Results
-
-| Obj | Description | DAL D | DAL C | DAL B | DAL A | Ind? | Responsible |
-|-----|-------------|-------|-------|-------|-------|------|-------------|
-| A9-1 | Test coverage of HLR is achieved | ✓ | ✓ | ✓ | ✓ | Yes | Agent C |
-| A9-2 | Test coverage of LLR is achieved | — | ✓ | ✓ | ✓ | Yes | Agent C |
-| A9-3 | Test coverage of software structure is achieved | — | ✓ | ✓ | ✓ | Yes | Agent C |
-
-#### Table A-10: Software Configuration Management
-
-| Obj | Description | DAL D | DAL C | DAL B | DAL A | Ind? | Responsible |
-|-----|-------------|-------|-------|-------|-------|------|-------------|
-| A10-1 | Configuration items are identified | ✓ | ✓ | ✓ | ✓ | No | Agent D |
-| A10-2 | Baselines and traceability are established | ✓ | ✓ | ✓ | ✓ | No | Agent D |
-| A10-3 | Problem reporting, change control, and review are established | ✓ | ✓ | ✓ | ✓ | No | Agent D |
-| A10-4 | Release of configuration items is controlled | ✓ | ✓ | ✓ | ✓ | No | Agent D |
-| A10-5 | Archive, retrieval, and protection are established | ✓ | ✓ | ✓ | ✓ | No | Agent D |
-| A10-6 | Software load control is established | ✓ | ✓ | ✓ | ✓ | No | Agent D |
-| A10-7 | Software lifecycle environment control is established | ✓ | ✓ | ✓ | ✓ | No | Agent D |
-
----
-
-### Procedure
-
-**Step 1: Load objective set for assigned DAL**
-
-Use the representative objective tables above. Mark each row as applicable or not applicable for the project. The column for the assigned DAL indicates whether the objective is required (✓) or not required (—) at that level.
-
-**Step 2: For each applicable objective, identify three things:**
-
-1. **Plan reference** — which section of which plan describes how this objective will be satisfied
-2. **Activity** — what was actually done to satisfy it
-3. **Evidence** — the specific LAR artifact that proves it (e.g., `LAR/RR-0007.yaml`)
-
-Every evidence reference must point to an actual file in the LAR.
-
-**Step 3: Determine status for each objective**
-
-- **SATISFIED** — plan reference exists, activity was performed, evidence artifact exists and is complete
-- **OPEN** — one or more of the above is missing — record what's missing
-- **NOT APPLICABLE** — objective does not apply at this DAL or for this project — record justification
-
-**Step 4: Identify gaps**
-
-For every OPEN objective:
-- What is missing (plan, activity, or evidence)?
-- Which agent is responsible for resolving it?
-- Path to resolution?
-
-**Step 5: Generate compliance matrix**
+### Compliance Matrix Template
 
 ```yaml
 dal: [A | B | C | D]
 date: [current date]
+objective_source: >
+  [the program's copy of DO-178C / ED-12C: edition and document control reference]
 total_objectives: [count]
 satisfied: [count]
 open: [count]
 not_applicable: [count]
 objectives:
-  - table: [A-1 through A-10]
-    number: [objective number]
+  - table: [Annex A table identifier, as given in the program's copy of the standard]
+    number: [objective identifier, as given in the program's copy of the standard]
     description: >
-      [objective text]
+      [objective summary, taken from the program's copy of the standard]
+    required_at_dal: [true | false (from the standard's applicability for the assigned DAL)]
+    independence_required: [true | false (from the standard, for the assigned DAL)]
+    responsible: [Agent A | Agent B | Agent C | Agent D]
     plan_reference: [plan section]
     activity: >
       [what was done]
@@ -248,6 +118,91 @@ objectives:
 ```
 
 Write to: `LAR/compliance_matrix.yaml`
+
+Where `independence_required` is true, the agent that performed the activity does not satisfy it. Agents A–D are collectively the developer, so independence is satisfied only by the human reviewer at the commit gate, and the evidence must show that review.
+
+### Procedure
+
+**Step 1: Load the objective set for the assigned DAL from the program's own copy of the standard**
+
+Populate the matrix from the Annex A objective tables in the program's purchased copy of DO-178C / ED-12C. The objectives are supplied by the user or the program (for example as a list or file transcribed from the standard under the program's licence); this skill does not contain them. If no objective set has been provided, stop and request it. Do not reconstruct objectives from memory or from the illustrative example below.
+
+For each supplied objective, record its table, number, and description, and from the standard's applicability for the assigned DAL set `required_at_dal` and `independence_required`. Assign `responsible` to the agent whose activity produces the evidence. Mark objectives not required at the assigned DAL as `not_applicable`.
+
+**Step 2: For each applicable objective, identify three things:**
+
+1. **Plan reference** — which section of which plan describes how this objective will be satisfied
+2. **Activity** — what was actually done to satisfy it
+3. **Evidence** — the specific LAR artifact that proves it (e.g., `LAR/RR-0007.yaml`)
+
+Every evidence reference must point to an actual file in the LAR.
+
+**Step 3: Determine status for each objective**
+
+- **SATISFIED** — plan reference exists, activity was performed, evidence artifact exists and is complete (and, where independence is required, the evidence shows the human reviewer's review)
+- **OPEN** — one or more of the above is missing — record what's missing
+- **NOT APPLICABLE** — objective does not apply at this DAL or for this project — record justification
+
+**Step 4: Identify gaps**
+
+For every OPEN objective:
+- What is missing (plan, activity, or evidence)?
+- Which agent is responsible for resolving it?
+- Path to resolution?
+
+**Step 5: Write the compliance matrix**
+
+Fill in the template above and write it to `LAR/compliance_matrix.yaml`.
+
+### Illustrative Example: Filling the Template
+
+> **Illustration of the format only.** The rows below are a small paraphrased sample, chosen to show the structure of objective-level tracking: applicability that varies by DAL, independence that applies at some levels and not others, and one owning agent per objective. They are not the standard's wording, not a complete table, and not a basis for compliance. A real matrix is built from the program's own copy of the standard (Step 1).
+
+| Table | Obj | Paraphrased objective | DAL D | DAL C | DAL B | DAL A | Independence required at | Responsible |
+|-------|-----|-----------------------|-------|-------|-------|-------|--------------------------|-------------|
+| A-2 | A2-1 | High-level requirements are developed | ✓ | ✓ | ✓ | ✓ | — | Agent A |
+| A-2 | A2-4 | Low-level requirements are developed | — | ✓ | ✓ | ✓ | — | Agent A |
+| A-2 | A2-6 | Source code is developed | ✓ | ✓ | ✓ | ✓ | — | Agent B |
+| A-2 | A2-7 | Executable object code is produced | ✓ | ✓ | ✓ | ✓ | — | Agent B |
+| A-3 | A3-1 | HLR comply with system requirements | — | ✓ | ✓ | ✓ | A, B | Agent C |
+| A-3 | A3-4 | HLR are verifiable | — | ✓ | ✓ | ✓ | A, B | Agent C |
+| A-3 | A3-6 | HLR are traceable to system requirements | — | ✓ | ✓ | ✓ | A, B | Agent C |
+| A-10 | A10-1 | Configuration items are identified | ✓ | ✓ | ✓ | ✓ | — | Agent D |
+| A-10 | A10-3 | Problem reporting, change control, and review are established | ✓ | ✓ | ✓ | ✓ | — | Agent D |
+
+One of these rows as a matrix entry, for a DAL B program:
+
+```yaml
+  - table: A-3
+    number: A3-1
+    description: >
+      HLR comply with system requirements (paraphrased)
+    required_at_dal: true
+    independence_required: true
+    responsible: Agent C
+    plan_reference: SVP §4.2 (requirements review)
+    activity: >
+      Agent C drafted the HLR review record against SYS requirements; the
+      human reviewer reviewed and signed it at the commit gate.
+    evidence:
+      - LAR/RR-0007.yaml
+    status: satisfied
+    gap: ""
+```
+
+At DAL C or D the same objective would carry `independence_required: false`; at DAL D it would be `not_applicable`.
+
+### Annex A Tables Not Sampled Above
+
+The standard's remaining objective tables are summarised here by subject only. Obtain their objectives from the program's copy of DO-178C / ED-12C.
+
+- **Table A-1** — software planning: definition of the lifecycle processes, environment, and plans, and their mutual consistency.
+- **Table A-4** — verification of the software architecture.
+- **Table A-5** — verification of the low-level requirements.
+- **Table A-6** — verification of the source code.
+- **Table A-7** — testing of the integrated executable object code.
+- **Table A-8** — structural coverage analysis.
+- **Table A-9** — verification of the verification process results.
 
 ---
 
