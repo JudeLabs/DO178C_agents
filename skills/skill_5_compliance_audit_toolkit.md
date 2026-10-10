@@ -1,6 +1,6 @@
 # Skill 5: Compliance & Audit Toolkit
 
-> **Note on the standard:** DO-178C (RTCA DO-178C / EUROCAE ED-12C) is a copyrighted document and must be purchased from RTCA or EUROCAE. This skill does not reproduce its objective tables. Any objective references below are paraphrased illustrations of the compliance-matrix format; a real program must populate the matrix from its own copy of the standard.
+> **Note on the standard:** DO-178C (RTCA DO-178C / EUROCAE ED-12C) is a copyrighted document and must be purchased from RTCA or EUROCAE. This skill does not reproduce its objective tables. The example objectives below are invented placeholders that show the compliance-matrix format; a real program must populate the matrix from its own copy of the standard.
 
 **Used by:** Agent D (Process & Compliance)
 
@@ -156,27 +156,24 @@ Fill in the template above and write it to `LAR/compliance_matrix.yaml`.
 
 ### Illustrative Example: Filling the Template
 
-> **Illustration of the format only.** The rows below are a small paraphrased sample, chosen to show the structure of objective-level tracking: applicability that varies by DAL, independence that applies at some levels and not others, and one owning agent per objective. They are not the standard's wording, not a complete table, and not a basis for compliance. A real matrix is built from the program's own copy of the standard (Step 1).
+> **Invented placeholders only.** The objectives below are made up. They are not DO-178C objectives, and their identifiers, wording, level applicability and independence marks do not come from the standard. They exist only to show the structure of objective-level tracking: applicability that varies by DAL, independence that applies at some levels and not others, and one owning agent per objective. A real matrix is built from the program's own copy of the standard (Step 1).
 
-| Table | Obj | Paraphrased objective | DAL D | DAL C | DAL B | DAL A | Independence required at | Responsible |
+| Table | Obj | Placeholder objective | DAL D | DAL C | DAL B | DAL A | Independence required at | Responsible |
 |-------|-----|-----------------------|-------|-------|-------|-------|--------------------------|-------------|
-| A-2 | A2-1 | High-level requirements are developed | ✓ | ✓ | ✓ | ✓ | — | Agent A |
-| A-2 | A2-4 | Low-level requirements are developed | — | ✓ | ✓ | ✓ | — | Agent A |
-| A-2 | A2-6 | Source code is developed | ✓ | ✓ | ✓ | ✓ | — | Agent B |
-| A-2 | A2-7 | Executable object code is produced | ✓ | ✓ | ✓ | ✓ | — | Agent B |
-| A-3 | A3-1 | HLR comply with system requirements | — | ✓ | ✓ | ✓ | A, B | Agent C |
-| A-3 | A3-4 | HLR are verifiable | — | ✓ | ✓ | ✓ | A, B | Agent C |
-| A-3 | A3-6 | HLR are traceable to system requirements | — | ✓ | ✓ | ✓ | A, B | Agent C |
-| A-10 | A10-1 | Configuration items are identified | ✓ | ✓ | ✓ | ✓ | — | Agent D |
-| A-10 | A10-3 | Problem reporting, change control, and review are established | ✓ | ✓ | ✓ | ✓ | — | Agent D |
+| EX-1 | EX-1.1 | Example requirements-development objective | ✓ | ✓ | ✓ | ✓ | — | Agent A |
+| EX-1 | EX-1.2 | Example detailed-design objective | — | ✓ | ✓ | ✓ | — | Agent A |
+| EX-1 | EX-1.3 | Example coding objective | ✓ | ✓ | ✓ | ✓ | — | Agent B |
+| EX-2 | EX-2.1 | Example requirements-review objective | — | ✓ | ✓ | ✓ | A, B | Agent C |
+| EX-2 | EX-2.2 | Example testing objective | ✓ | ✓ | ✓ | ✓ | A | Agent C |
+| EX-3 | EX-3.1 | Example configuration-management objective | ✓ | ✓ | ✓ | ✓ | — | Agent D |
 
 One of these rows as a matrix entry, for a DAL B program:
 
 ```yaml
-  - table: A-3
-    number: A3-1
+  - table: EX-2
+    number: EX-2.1
     description: >
-      HLR comply with system requirements (paraphrased)
+      Example requirements-review objective (placeholder)
     required_at_dal: true
     independence_required: true
     responsible: Agent C
@@ -190,19 +187,7 @@ One of these rows as a matrix entry, for a DAL B program:
     gap: ""
 ```
 
-At DAL C or D the same objective would carry `independence_required: false`; at DAL D it would be `not_applicable`.
-
-### Annex A Tables Not Sampled Above
-
-The standard's remaining objective tables are summarised here by subject only. Obtain their objectives from the program's copy of DO-178C / ED-12C.
-
-- **Table A-1** — software planning: definition of the lifecycle processes, environment, and plans, and their mutual consistency.
-- **Table A-4** — verification of the software architecture.
-- **Table A-5** — verification of the low-level requirements.
-- **Table A-6** — verification of the source code.
-- **Table A-7** — testing of the integrated executable object code.
-- **Table A-8** — structural coverage analysis.
-- **Table A-9** — verification of the verification process results.
+At DAL C the same placeholder would carry `independence_required: false`; at DAL D it would be `not_applicable`.
 
 ---
 

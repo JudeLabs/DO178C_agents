@@ -6,4 +6,4 @@ Agents A, B, C, and D are collectively the developer. DO-178C independence comes
 
 ## Notice
 
-This repository contains no RTCA or EUROCAE content. DO-178C / ED-12C must be obtained from RTCA or EUROCAE. Any objective references here are paraphrased illustrations, not reproductions.
+This repository contains no RTCA or EUROCAE content. DO-178C / ED-12C must be obtained from RTCA or EUROCAE. Example objectives in this repository are invented placeholders, not taken from the standard.
