@@ -167,14 +167,20 @@ analysis_id: COV-XXXX
 invoked_by: Agent C
 verdict_source: [coverage tool and version]
 dal: [A | B | C | D]
+# Only the metrics required at this DAL apply. Omit the rest rather than
+# recording them as gaps:
+#   A -> statement, decision, mcdc
+#   B -> statement, decision
+#   C -> statement
+#   D -> none (structural coverage is not a Level D objective)
 metrics:
-  statement_coverage:
+  statement_coverage:        # DAL A, B, C
     achieved:
     target: 100%
-  decision_coverage:
+  decision_coverage:         # DAL A, B only
     achieved:
     target: 100%
-  mcdc_coverage:
+  mcdc_coverage:             # DAL A only
     achieved:
     target: 100%
 gaps:

@@ -88,9 +88,10 @@ verification_methods:
   testing: []
 coverage_requirements:
   dal:
-  statement_coverage: required
-  decision_coverage:
-  mcdc_coverage:
+  # required | not_required, per DAL:
+  statement_coverage:        # required at A, B, C
+  decision_coverage:         # required at A, B
+  mcdc_coverage:             # required at A only
 independence_requirements:
   development_verification_separation:
 regression_strategy:
