@@ -92,9 +92,9 @@ Write to: `LAR/RR-[artifact_id].yaml`
 
 | DAL | Required Coverage |
 |-----|------------------|
-| D | Statement Coverage (SC) |
-| C | SC + Decision Coverage (DC) |
-| B | SC + DC |
+| D | None required |
+| C | Statement Coverage (SC) |
+| B | SC + Decision Coverage (DC) |
 | A | SC + DC + MC/DC |
 
 ### Gap Categories
@@ -111,14 +111,20 @@ Write to: `LAR/RR-[artifact_id].yaml`
 ```yaml
 analysis_id: COV-[next available number]
 dal: [A | B | C | D]
+# Only the metrics required at this DAL apply. Omit the rest rather than
+# recording them as gaps:
+#   A -> statement, decision, mcdc
+#   B -> statement, decision
+#   C -> statement
+#   D -> none (structural coverage is not a Level D objective)
 metrics:
-  statement_coverage:
+  statement_coverage:        # DAL A, B, C
     achieved: [percentage]
     target: 100%
-  decision_coverage:
+  decision_coverage:         # DAL A, B only
     achieved: [percentage]
     target: 100%
-  mcdc_coverage:
+  mcdc_coverage:             # DAL A only
     achieved: [percentage]
     target: 100%
 gaps:
